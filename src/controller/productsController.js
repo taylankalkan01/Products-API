@@ -1,6 +1,6 @@
 const Product = require("../model/Products")
 
-getAllProducts = (req,res)=>{
+const getAllProducts = (req,res)=>{
     Product.find()
     .then((product)=>{
         res.json(product);
@@ -10,7 +10,7 @@ getAllProducts = (req,res)=>{
     })
 }
 
-getProductById = (req,res)=>{
+const getProductById = (req,res)=>{
     Product.findById(req.params.id)
     .then((product) =>{
         res.json(product)
@@ -20,7 +20,7 @@ getProductById = (req,res)=>{
     })
 }
 
-createProduct = (req,res)=>{
+const createProduct = (req,res)=>{
      
     const product = new Product({
         name:req.body.name,
@@ -32,7 +32,7 @@ createProduct = (req,res)=>{
     res.json(product)
 }
 
-updateProduct = (req,res)=>{
+const updateProduct = (req,res)=>{
     Product.findByIdAndUpdate(req.params.id,{ //req.body
         name:req.body.name,
         price:req.body.price,
@@ -46,7 +46,7 @@ updateProduct = (req,res)=>{
     })
 }
 
-deleteProduct = (req,res)=>{
+const deleteProduct = (req,res)=>{
     Product.findByIdAndDelete(req.params.id)
     .then((product) =>{
         res.json(product + "deleted")
